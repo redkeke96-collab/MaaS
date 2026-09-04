@@ -1,0 +1,10 @@
+{
+  "name":"대구 MaaS 이용가이드",
+  "short_name":"MaaS 가이드",
+  "start_url":"./index.html",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#f5f6f8",
+  "theme_color":"#ffffff",
+  "description":"대구형 MaaS 플랫폼 주요 기능 이용가이드"
+}
