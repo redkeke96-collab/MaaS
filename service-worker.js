@@ -1,0 +1,1 @@
+const C='maas-manual-v1';const A=['./','index.html','style.css','app.js','manifest.json','icon.svg',...Array.from({length:19},(_,i)=>`assets/page-${String(i+1).padStart(2,'0')}.png`)];self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(A))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
