@@ -1,19 +1,189 @@
-const guides=[
-{id:'start',ico:'👋',title:'시작하기',desc:'설치·로그인·접근권한·약관동의',page:3,steps:['앱스토어에서 ‘대구 MaaS’를 검색해 설치 후 실행해요.','카카오·네이버 계정으로 로그인해요. 기업회원 로그인도 가능해요.','접근권한을 허용해요.','서비스 이용약관에 동의해요. 만 14세 미만은 법정대리인 동의도 진행해요.']},
-{id:'home',ico:'🏠',title:'홈 화면',desc:'지도·교통정보·날씨·주차장 확인',page:4,steps:['마이페이지에서 내 정보와 이용기록을 확인할 수 있어요.','교통카드 잔액·충전·마일리지를 확인할 수 있어요.','도시철도·버스·DRT·자전거 버튼으로 각 기능으로 이동해요.','날씨와 공영주차장·도로 소통정보를 지도에서 확인해요.','하단 정보카드를 위로 밀면 실시간 운행정보·이벤트·최근 목적지를 볼 수 있어요.']},
-{id:'route',ico:'🧭',title:'길찾기',desc:'통합경로·교통약자·도시철도·버스',page:6,steps:['홈의 ‘어디로 갈까요?’를 터치해요.','출발지와 도착지를 입력해요.','원하는 교통수단을 선택해요. ‘전체’는 여러 교통수단을 조합해 안내해요.','정렬기준에서 원하는 기준을 선택해요.','안내된 최적 경로를 확인해요.'],tip:'교통약자 경로안내를 켜면 계단 없는 경로와 저상버스 기준의 길안내를 확인할 수 있어요.'},
-{id:'rail',ico:'🚇',title:'도시철도',desc:'출도착역 검색·최단경로·즐겨찾기',page:8,steps:['홈에서 ‘도시철도’를 선택해요.','출발역과 도착역을 검색·선택해요.','경로를 확인하고 하단 카드를 확장해요.','최단경로·최소환승 경로를 선택해서 볼 수 있어요.','즐겨찾기를 등록하면 홈의 즐겨찾는 경로에서 다시 확인할 수 있어요.']},
-{id:'bus',ico:'🚍',title:'버스',desc:'버스·정류장 검색과 실시간 이동정보',page:9,steps:['홈에서 ‘버스’를 터치해요.','검색창에서 버스 또는 정류장을 선택해요.','버스 번호 또는 정류장명을 입력해요.','검색결과를 선택하고 하단 카드를 위로 확장해요.','상세 정류장 정보와 버스 실시간 이동정보를 확인해요.']},
-{id:'mypage',ico:'👤',title:'마이페이지',desc:'이용기록·쿠폰·즐겨찾기·문의',page:10,steps:['홈 왼쪽 위 메뉴 버튼을 눌러 마이페이지로 이동해요.','내정보·이용기록·쿠폰·즐겨찾기를 확인하고 관리해요.','공지사항·자주하는 질문·이벤트를 확인해요.','문의하기에서 대구교통공사 담당자에게 문의할 수 있어요.']},
-{id:'card',ico:'💳',title:'모바일 교통카드',desc:'원패스 발급·충전·마일리지 전환',page:11,steps:['홈 오른쪽 위 카드 아이콘을 터치해요.','‘신청하기’를 누르고 본인인증을 진행해요.','이용약관에 동의하면 카드 발급이 완료돼요.','충전하기에서 결제수단과 충전금액을 선택해 충전해요.','마일리지는 ‘전환하기’에서 교통카드 금액으로 전환할 수 있어요.'],tip:'안드로이드폰은 안정적인 태그 결제를 위해 NFC 결제를 활성화하고, 다른 결제앱과 충돌하지 않도록 설정하는 것을 권장해요.'},
-{id:'drt',ico:'🚌',title:'DRT 이용',desc:'출도착지 지정·차량 호출·결제',page:14,steps:['홈에서 DRT 탭을 터치해요.','출발지와 도착지를 입력·선택해요.','차량별 도착시간을 확인하고 차량을 선택해요.','탑승 인원 수를 선택해요.','‘차량호출하기’를 터치하고 승차를 기다려요.','하차 시 차량 내 결제단말기로 결제해요.'],tip:'앱에 교통카드가 등록된 안드로이드폰은 태그 결제가 가능하며, 아이폰은 실물 교통카드 결제가 필요해요.'},
-{id:'bike',ico:'🚲',title:'공유자전거',desc:'자전거 선택·QR 대여·반납',page:15,steps:['홈에서 자전거 탭을 터치해요.','지도에서 대여할 자전거를 선택해요.','결제카드를 확인하고 ‘대여하기’를 터치해요.','자전거의 QR을 스캔하고 탑승해요.','도착 후 ‘반납하기’를 누르고 하차지 주변을 촬영·등록해요.','운행 종료를 확인해요.']},
-{id:'coupon',ico:'🎟️',title:'쿠폰 사용',desc:'쿠폰 받기·다운로드·매장 사용',page:16,steps:['마이페이지에서 ‘쿠폰’을 터치해요.','‘쿠폰받기’에서 받을 수 있는 쿠폰을 확인해요.','‘다운로드’를 눌러 쿠폰을 받아요.','받은 쿠폰함에서 사용할 쿠폰을 선택해요.','매장 직원에게 사용완료 확인을 요청해요.','직원이 쿠폰암호를 입력하면 사용 처리돼요.']},
-{id:'qr',ico:'▦',title:'매장 QR 결제',desc:'QR 스캔 후 교통카드 잔액 결제',page:17,steps:['교통카드 페이지에서 QR을 터치해요.','매장 카운터의 QR을 스캔해요.','결제금액을 입력해요.','‘결제하기’를 터치해요.','결제완료를 확인하고 확인 버튼을 눌러요.']},
-{id:'more',ico:'ℹ️',title:'더 알아보기',desc:'14세 미만·아이폰·NFC 이용 안내',page:18,steps:['만 14세 미만은 약관 동의 시 안내에 따라 법정대리인 인증을 진행해요.','아이폰은 버스·도시철도·DRT의 NFC 접촉식 결제가 제한돼요.','아이폰에서도 노선 조회·DRT 호출·공유자전거·매장 QR 결제·이력관리는 이용할 수 있어요.','안드로이드폰은 NFC 결제를 활성화하고 다른 결제앱과의 충돌을 피하도록 설정해요.']}
+const guides = [
+  {
+    id:"start", icon:"👋", title:"시작하기", subtitle:"로그인 · 접근 권한 · 약관동의",
+    steps:[
+      "앱스토어에서 ‘대구 MaaS’를 설치하고 실행해요.",
+      "카카오 또는 네이버 계정으로 로그인해요.",
+      "위치·알림 등 필요한 접근 권한을 허용해요.",
+      "서비스 이용약관에 동의해요. 만 14세 미만은 법정대리인 동의가 필요해요."
+    ]
+  },
+  {
+    id:"home", icon:"🗺️", title:"홈 화면", subtitle:"지도와 정보카드 활용",
+    steps:[
+      "상단 지도에서 현재 위치와 교통정보를 확인해요.",
+      "하단 정보카드를 위로 밀면 실시간 운행정보·이벤트·최근 목적지를 볼 수 있어요.",
+      "도시철도·버스·DRT·자전거 버튼으로 바로 이동할 수 있어요.",
+      "날씨·도로소통정보·공영주차장도 지도에서 확인할 수 있어요."
+    ]
+  },
+  {
+    id:"route", icon:"🧭", title:"길찾기", subtitle:"출발지와 목적지만 입력하면 경로 안내",
+    steps:[
+      "홈 화면의 ‘어디로 갈까요?’를 터치해요.",
+      "출발지와 도착지를 입력해요.",
+      "전체 또는 원하는 교통수단을 선택해요.",
+      "정렬기준에서 원하는 기준으로 길안내를 받아요.",
+      "교통약자 경로안내를 켜면 계단 없는 경로·저상버스 기준 안내를 확인할 수 있어요."
+    ]
+  },
+  {
+    id:"rail", icon:"🚇", title:"도시철도", subtitle:"노선검색 · 최단경로 · 즐겨찾기",
+    steps:[
+      "도시철도 메뉴를 선택해요.",
+      "출발역과 도착역을 검색해요.",
+      "최단경로 또는 최소환승 경로를 확인해요.",
+      "자주 쓰는 경로는 즐겨찾기에 저장해요."
+    ]
+  },
+  {
+    id:"bus", icon:"🚌", title:"버스", subtitle:"노선·정류장 검색과 실시간 정보",
+    steps:[
+      "버스 메뉴를 터치해요.",
+      "버스 또는 정류장을 선택해 검색해요.",
+      "버스 번호나 정류장명을 입력해요.",
+      "상세 정류장 정보와 실시간 버스 이동 정보를 확인해요."
+    ]
+  },
+  {
+    id:"mypage", icon:"👤", title:"마이페이지", subtitle:"내 정보 · 이용기록 · 쿠폰 · 문의",
+    steps:[
+      "내정보와 프로필을 확인·변경할 수 있어요.",
+      "DRT·자전거 이용내역과 결제내역을 확인해요.",
+      "쿠폰·즐겨찾기·공지사항·FAQ를 관리해요.",
+      "문의하기에서 담당자에게 문의할 수 있어요."
+    ]
+  },
+  {
+    id:"card", icon:"💳", title:"모바일 교통카드", subtitle:"발급 · 충전 · 마일리지 전환",
+    steps:[
+      "홈 오른쪽 위 교통카드 아이콘을 터치해요.",
+      "신청하기 → 본인인증 → 약관동의 순서로 발급해요.",
+      "충전하기에서 결제수단과 금액을 선택해 충전해요.",
+      "보유 마일리지는 교통카드 금액으로 전환할 수 있어요."
+    ]
+  },
+  {
+    id:"drt", icon:"🚐", title:"DRT 이용", subtitle:"출도착지 선택부터 차량 호출까지",
+    steps:[
+      "홈 화면에서 DRT를 선택해요.",
+      "출발지와 도착지를 입력해요.",
+      "도착시간을 확인해 차량과 탑승인원을 선택해요.",
+      "‘차량호출하기’를 눌러 배차를 요청해요.",
+      "하차 시 차량 내 결제 단말기로 결제해요."
+    ]
+  },
+  {
+    id:"bike", icon:"🚲", title:"공유자전거", subtitle:"대여 · QR 스캔 · 반납",
+    steps:[
+      "홈 화면에서 자전거를 선택해요.",
+      "지도에서 대여할 자전거를 선택해요.",
+      "결제카드를 확인하고 ‘대여하기’를 눌러요.",
+      "자전거 QR을 스캔하고 탑승해요.",
+      "도착 후 반납하기 → 하차지 촬영·등록 → 운행종료를 확인해요."
+    ]
+  },
+  {
+    id:"coupon", icon:"🎟️", title:"쿠폰", subtitle:"다운로드부터 매장 사용까지",
+    steps:[
+      "마이페이지에서 쿠폰을 선택해요.",
+      "쿠폰받기에서 원하는 쿠폰을 다운로드해요.",
+      "매장에서 사용할 쿠폰을 열어 직원에게 보여줘요.",
+      "직원이 쿠폰암호를 입력하면 사용처리가 완료돼요."
+    ]
+  },
+  {
+    id:"qr", icon:"▣", title:"매장 QR 결제", subtitle:"교통카드 잔액으로 결제",
+    steps:[
+      "교통카드 페이지에서 QR을 터치해요.",
+      "매장 카운터의 QR을 스캔해요.",
+      "결제금액을 입력하고 결제하기를 터치해요.",
+      "결제완료 화면을 확인해요."
+    ]
+  }
 ];
-const cards=document.querySelector('#cards'),q=document.querySelector('#q'),dlg=document.querySelector('#detail'),body=document.querySelector('#detailBody');
-function render(list=guides){cards.innerHTML=list.length?list.map(g=>`<button class="card" data-id="${g.id}"><span class="ico">${g.ico}</span><h3>${g.title}</h3><p>${g.desc}</p><span class="arrow">→</span></button>`).join(''):`<div class="empty">검색 결과가 없어요.</div>`}
-function openGuide(id){const g=guides.find(x=>x.id===id);if(!g)return;body.innerHTML=`<span class="detail-kicker">대구 MaaS 사용 가이드</span><h2>${g.ico} ${g.title}</h2><p class="desc">${g.desc}</p><ol class="steps">${g.steps.map((s,i)=>`<li><span class="num">${i+1}</span><span>${s}</span></li>`).join('')}</ol>${g.tip?`<div class="tip">💡 ${g.tip}</div>`:''}<img class="manual-img" src="assets/page-${String(g.page).padStart(2,'0')}.png" alt="매뉴얼 ${g.page}페이지">`;dlg.showModal()}
-render();cards.addEventListener('click',e=>{const b=e.target.closest('[data-id]');if(b)openGuide(b.dataset.id)});document.querySelector('.close').onclick=()=>dlg.close();dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});q.addEventListener('input',()=>{const s=q.value.trim().toLowerCase();render(guides.filter(g=>(g.title+g.desc+g.steps.join(' ')).toLowerCase().includes(s)))});document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>openGuide(b.dataset.go));document.querySelector('[data-top]').onclick=()=>scrollTo({top:0,behavior:'smooth'});
-let deferred;addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;document.querySelector('#install').hidden=false});document.querySelector('#install').onclick=async()=>{if(deferred){deferred.prompt();await deferred.userChoice;deferred=null;document.querySelector('#install').hidden=true}};if('serviceWorker'in navigator)navigator.serviceWorker.register('service-worker.js');
+
+const guideList = document.getElementById("guideList");
+const emptyState = document.getElementById("emptyState");
+const searchInput = document.getElementById("searchInput");
+const dialog = document.getElementById("detailDialog");
+const detailTitle = document.getElementById("detailTitle");
+const detailSubtitle = document.getElementById("detailSubtitle");
+const detailSteps = document.getElementById("detailSteps");
+
+function renderGuides(items){
+  guideList.innerHTML = items.map(g => `
+    <button class="guide-card" data-id="${g.id}">
+      <div class="guide-icon">${g.icon}</div>
+      <div class="guide-copy">
+        <strong>${g.title}</strong>
+        <span>${g.subtitle}</span>
+      </div>
+      <b class="chev">›</b>
+    </button>
+  `).join("");
+
+  emptyState.style.display = items.length ? "none" : "block";
+
+  guideList.querySelectorAll("[data-id]").forEach(btn => {
+    btn.addEventListener("click", () => openGuide(btn.dataset.id));
+  });
+}
+
+function openGuide(id){
+  const g = guides.find(x => x.id === id);
+  if(!g) return;
+
+  detailTitle.textContent = g.title;
+  detailSubtitle.textContent = g.subtitle;
+  detailSteps.innerHTML = g.steps.map((step, i) => `
+    <div class="step">
+      <div class="num">${i + 1}</div>
+      <p>${step}</p>
+    </div>
+  `).join("");
+
+  dialog.showModal();
+}
+
+document.querySelectorAll("[data-open]").forEach(btn => {
+  btn.addEventListener("click", () => openGuide(btn.dataset.open));
+});
+
+document.querySelector("[data-home]").addEventListener("click", () => {
+  window.scrollTo({top:0, behavior:"smooth"});
+});
+
+document.querySelector("[data-search-focus]").addEventListener("click", () => {
+  searchInput.focus();
+  window.scrollTo({top:0, behavior:"smooth"});
+});
+
+document.getElementById("closeDialog").addEventListener("click", () => dialog.close());
+
+dialog.addEventListener("click", e => {
+  if(e.target === dialog) dialog.close();
+});
+
+searchInput.addEventListener("input", () => {
+  const q = searchInput.value.trim().toLowerCase();
+
+  if(!q){
+    renderGuides(guides);
+    return;
+  }
+
+  const filtered = guides.filter(g =>
+    `${g.title} ${g.subtitle} ${g.steps.join(" ")}`.toLowerCase().includes(q)
+  );
+
+  renderGuides(filtered);
+});
+
+renderGuides(guides);
+
+if("serviceWorker" in navigator){
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("service-worker.js").catch(console.error);
+  });
+}

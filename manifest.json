@@ -1,1 +1,22 @@
-{"name":"대구 MaaS 사용설명서","short_name":"MaaS 설명서","start_url":"./","display":"standalone","background_color":"#f4f7fb","theme_color":"#0877e8","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
+{
+  "name": "대구 MaaS 사용설명서",
+  "short_name": "대구 MaaS 안내",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0B78F2",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
